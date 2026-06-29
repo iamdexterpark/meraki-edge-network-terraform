@@ -1,0 +1,8 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!create-network",
+  "name": "edge-site-01",
+  "product_types": ["appliance", "switch", "wireless"],
+  "time_zone": "Etc/UTC",
+  "tags": ["managed-by-terraform", "edge-site"],
+  "notes": "Managed by Terraform — meraki-edge-network-terraform"
+}

@@ -1,0 +1,7 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-organization",
+  "_comment": "Set manage=true to have Terraform own the org. Set manage=false and provide organization_id to reference an existing org.",
+  "manage": false,
+  "organization_id": "REPLACE_ORG_ID",
+  "name": "edge-org"
+}

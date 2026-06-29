@@ -1,0 +1,49 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!update-network-appliance-firewall-l3-firewall-rules",
+  "l3_firewall_rules": {
+    "syslogDefaultRule": true,
+    "rules": [
+      {
+        "comment": "trusted -> mgmt",
+        "policy": "allow",
+        "protocol": "any",
+        "srcCidr": "198.51.100.0/24",
+        "srcPort": "Any",
+        "destCidr": "192.0.2.0/28",
+        "destPort": "Any",
+        "syslogEnabled": false
+      },
+      {
+        "comment": "iot -> trusted block",
+        "policy": "deny",
+        "protocol": "any",
+        "srcCidr": "203.0.113.0/24",
+        "srcPort": "Any",
+        "destCidr": "198.51.100.0/24",
+        "destPort": "Any",
+        "syslogEnabled": true
+      },
+      {
+        "comment": "guest -> rfc1918 block",
+        "policy": "deny",
+        "protocol": "any",
+        "srcCidr": "192.0.2.16/28",
+        "srcPort": "Any",
+        "destCidr": "10.0.0.0/8",
+        "destPort": "Any",
+        "syslogEnabled": true
+      },
+      {
+        "comment": "default deny (explicit)",
+        "policy": "deny",
+        "protocol": "any",
+        "srcCidr": "Any",
+        "srcPort": "Any",
+        "destCidr": "Any",
+        "destPort": "Any",
+        "syslogEnabled": true
+      }
+    ]
+  },
+  "l7_firewall_rules": null
+}

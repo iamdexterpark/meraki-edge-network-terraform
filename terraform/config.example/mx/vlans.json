@@ -1,0 +1,42 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-network-appliance-vlans",
+  "_comment": "All addresses use RFC 5737 documentation ranges. Replace with your real subnets.",
+  "vlans": [
+    {
+      "id": "10",
+      "name": "mgmt",
+      "subnet": "192.0.2.0/28",
+      "applianceIp": "192.0.2.1",
+      "dhcpHandling": "Run a DHCP server",
+      "dhcpLeaseTime": "1 day",
+      "dnsNameservers": "upstream_dns"
+    },
+    {
+      "id": "20",
+      "name": "lan-trusted",
+      "subnet": "198.51.100.0/24",
+      "applianceIp": "198.51.100.1",
+      "dhcpHandling": "Run a DHCP server",
+      "dhcpLeaseTime": "1 day",
+      "dnsNameservers": "upstream_dns"
+    },
+    {
+      "id": "30",
+      "name": "iot",
+      "subnet": "203.0.113.0/24",
+      "applianceIp": "203.0.113.1",
+      "dhcpHandling": "Run a DHCP server",
+      "dhcpLeaseTime": "12 hours",
+      "dnsNameservers": "upstream_dns"
+    },
+    {
+      "id": "40",
+      "name": "guest",
+      "subnet": "192.0.2.16/28",
+      "applianceIp": "192.0.2.17",
+      "dhcpHandling": "Run a DHCP server",
+      "dhcpLeaseTime": "1 hour",
+      "dnsNameservers": "upstream_dns"
+    }
+  ]
+}

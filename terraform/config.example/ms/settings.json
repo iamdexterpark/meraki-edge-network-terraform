@@ -1,0 +1,5 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-network-switch-settings",
+  "vlan": 1,
+  "useCombinedPower": false
+}

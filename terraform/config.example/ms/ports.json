@@ -1,0 +1,45 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-device-switch-ports",
+  "_comment": "Each port requires a serial. Replace YYYY-YYYY-YYYY with your switch serial.",
+  "ports": [
+    {
+      "serial": "YYYY-YYYY-YYYY",
+      "portId": "1",
+      "name": "trusted-access",
+      "type": "access",
+      "vlan": 20,
+      "enabled": true,
+      "poeEnabled": true,
+      "stpGuard": "bpdu guard"
+    },
+    {
+      "serial": "YYYY-YYYY-YYYY",
+      "portId": "2",
+      "name": "iot-access",
+      "type": "access",
+      "vlan": 30,
+      "enabled": true,
+      "poeEnabled": true
+    },
+    {
+      "serial": "YYYY-YYYY-YYYY",
+      "portId": "3",
+      "name": "voice+data",
+      "type": "access",
+      "vlan": 20,
+      "voiceVlan": 50,
+      "enabled": true,
+      "poeEnabled": true
+    },
+    {
+      "serial": "YYYY-YYYY-YYYY",
+      "portId": "8",
+      "name": "uplink-to-mx",
+      "type": "trunk",
+      "vlan": 10,
+      "allowedVlans": "all",
+      "enabled": true,
+      "rstpEnabled": true
+    }
+  ]
+}

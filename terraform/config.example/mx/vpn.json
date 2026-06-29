@@ -1,0 +1,6 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!update-network-appliance-vpn-site-to-site-vpn",
+  "_comment": "Set mode to 'none', 'hub', or 'spoke'. Only relevant for networks in NAT mode.",
+  "site_to_site_vpn": null,
+  "bgp": null
+}

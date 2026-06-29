@@ -1,0 +1,13 @@
+%% LIFECYCLE — Terraform/network-IaC state machine. Each transition maps to a runbook.
+stateDiagram-v2
+    [*] --> Designed
+    Designed --> BackendReady: bootstrap remote state (rb 01)
+    BackendReady --> Planned: tofu plan (rb 02)
+    Planned --> Applied: tofu apply (rb 03)
+    Applied --> Applied: change JSON -> plan -> apply (rb 05)
+    Applied --> DriftDetected: scheduled tofu plan finds drift
+    DriftDetected --> Applied: re-apply (reconcile) or import
+    Applied --> RolledBack: revert config + apply (rb 05)
+    RolledBack --> Applied
+    Applied --> Destroyed: tofu destroy + verify no orphans (rb 07)
+    Destroyed --> [*]

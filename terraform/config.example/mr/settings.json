@@ -1,0 +1,13 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-network-wireless-settings",
+  "wireless": {
+    "meshingEnabled": true,
+    "ipv6BridgeEnabled": false,
+    "locationAnalyticsEnabled": true,
+    "ledLightsOn": true
+  },
+  "bluetooth": {
+    "scanningEnabled": true,
+    "advertisingEnabled": false
+  }
+}

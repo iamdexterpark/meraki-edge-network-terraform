@@ -1,0 +1,20 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-network-appliance-ports",
+  "_comment": "Configure MX appliance LAN ports. Port 1 is typically WAN.",
+  "ports": [
+    {
+      "portId": "3",
+      "enabled": true,
+      "type": "access",
+      "vlan": 20,
+      "dropUntaggedTraffic": false
+    },
+    {
+      "portId": "4",
+      "enabled": true,
+      "type": "trunk",
+      "vlan": 10,
+      "allowedVlans": "all"
+    }
+  ]
+}

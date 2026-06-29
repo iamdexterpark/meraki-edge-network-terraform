@@ -1,0 +1,52 @@
+%% LLD TOPOLOGY — top of LLD. SPECIFIC: named products, addresses, real wiring.
+%% Counterpart to hld_overview, same shape with concrete labels. RFC 5737 docs addresses.
+flowchart TB
+    subgraph Repo ["Source of truth (this repo)"]
+        JSON["config/*.json<br/>(camelCase, Dashboard-shaped)"]
+        MODS["modules/** (19)<br/>jsondecode + try()"]
+        JSON --> MODS
+    end
+
+    subgraph TF ["Reconciler"]
+        TOFU["OpenTofu / Terraform >= 1.5<br/>provider CiscoDevNet/meraki >= 1.0"]
+        GCS["remote backend<br/>(encrypted state)"]
+        TOFU -.->|"state"| GCS
+    end
+
+    ENV["env: MERAKI_DASHBOARD_API_KEY<br/>TF_VAR_ssid_psks"] -.->|"runtime inject"| TOFU
+    MODS --> TOFU
+    TOFU -->|"Dashboard API v1"| DASH["Meraki Dashboard<br/>Org -> Network -> Devices"]
+
+    subgraph Site ["Edge site (reference profile: single-site)"]
+        MX["MX security appliance<br/>L3 gw + firewall + SD-WAN"]
+        MS["MS access switch (PoE+)<br/>trunk :8 / access :1-7"]
+        MR["MR access point<br/>3x SSID -> bridge/NAT"]
+        MX ===|"802.1Q trunk"| MS
+        MS ===|"PoE+ access (mgmt VLAN)"| MR
+    end
+
+    DASH --> MX
+    DASH --> MS
+    DASH --> MR
+
+    subgraph VLANs ["L3 trust zones (MX-gateway'd)"]
+        V10["VLAN 10 mgmt<br/>192.0.2.0/28"]
+        V20["VLAN 20 trusted<br/>198.51.100.0/24"]
+        V30["VLAN 30 iot<br/>203.0.113.0/24"]
+        V40["VLAN 40 guest<br/>192.0.2.16/28 (isolated)"]
+    end
+    MX --> V10 & V20 & V30 & V40
+
+    style JSON fill:#2c3e50,color:#fff,stroke:#1a252f
+    style MODS fill:#2c3e50,color:#fff,stroke:#1a252f
+    style TOFU fill:#8e44ad,color:#fff,stroke:#713f8f
+    style GCS fill:#16a085,color:#fff,stroke:#0e6655
+    style ENV fill:#7f8c8d,color:#fff,stroke:#606a6b
+    style DASH fill:#e67e22,color:#fff,stroke:#b9651a
+    style MX fill:#2c3e50,color:#fff,stroke:#1a252f
+    style MS fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MR fill:#27ae60,color:#fff,stroke:#1e8449
+    style V10 fill:#16a085,color:#fff,stroke:#0e6655
+    style V20 fill:#27ae60,color:#fff,stroke:#1e8449
+    style V30 fill:#e67e22,color:#fff,stroke:#b9651a
+    style V40 fill:#c0392b,color:#fff,stroke:#922b21

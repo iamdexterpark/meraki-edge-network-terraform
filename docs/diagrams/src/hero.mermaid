@@ -1,0 +1,16 @@
+%% HERO — top of README, directly under the thesis.
+%% The whole story in one picture: JSON intent -> declarative reconcile -> Meraki cloud
+%% control plane -> the edge devices it programs. Role-generic enough to read at a glance.
+flowchart LR
+    OP["OPERATOR<br/>edits JSON intent"] -->|"git commit"| SRC["SOURCE OF TRUTH<br/>config/*.json + modules"]
+    SRC -->|"tofu apply<br/>(declarative end-state)"| REC["RECONCILER<br/>OpenTofu / Terraform"]
+    REC -->|"Dashboard API<br/>(ordered)"| CLOUD["MERAKI CLOUD<br/>control plane"]
+    CLOUD -->|"pushes config"| EDGE["EDGE NETWORK<br/>MX · MS · MR"]
+    REC -.->|"state R/W"| STATE["EXTERNALIZED STATE<br/>(encrypted remote backend)"]
+
+    style OP fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style SRC fill:#2c3e50,color:#fff,stroke:#1a252f
+    style REC fill:#8e44ad,color:#fff,stroke:#713f8f
+    style CLOUD fill:#e67e22,color:#fff,stroke:#b9651a
+    style EDGE fill:#27ae60,color:#fff,stroke:#1e8449
+    style STATE fill:#16a085,color:#fff,stroke:#0e6655

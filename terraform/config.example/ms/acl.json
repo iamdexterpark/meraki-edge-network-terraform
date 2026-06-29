@@ -1,0 +1,5 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-network-switch-access-control-lists",
+  "_comment": "Leave rules empty to use default allow-all. Add rules to restrict traffic.",
+  "rules": []
+}

@@ -1,0 +1,6 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-device-switch-routing-interfaces",
+  "routing_interfaces": [],
+  "static_routes": [],
+  "ospf": null
+}

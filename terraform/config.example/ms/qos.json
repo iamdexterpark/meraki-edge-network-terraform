@@ -1,0 +1,11 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-network-switch-qos-rules",
+  "qos_rules": [
+    {
+      "vlan": 50,
+      "protocol": "UDP",
+      "dscp": 46,
+      "_comment": "Voice VLAN -> EF (Expedited Forwarding)"
+    }
+  ]
+}

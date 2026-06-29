@@ -1,0 +1,44 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!get-network-wireless-ssids",
+  "_comment": "PSKs are NOT stored here — supply via TF_VAR_ssid_psks env var. 'number' is a string per provider schema (0-14).",
+  "ssids": [
+    {
+      "number": "0",
+      "name": "edge-trusted",
+      "enabled": true,
+      "authMode": "psk",
+      "ipAssignmentMode": "Bridge mode",
+      "defaultVlanId": 20,
+      "encryptionMode": "wpa",
+      "wpaEncryptionMode": "WPA3 Transition Mode",
+      "visible": true,
+      "availableOnAllAps": true,
+      "bandSelection": "Dual band operation"
+    },
+    {
+      "number": "1",
+      "name": "edge-iot",
+      "enabled": true,
+      "authMode": "psk",
+      "ipAssignmentMode": "Bridge mode",
+      "defaultVlanId": 30,
+      "encryptionMode": "wpa",
+      "wpaEncryptionMode": "WPA3 Transition Mode",
+      "visible": false,
+      "availableOnAllAps": true
+    },
+    {
+      "number": "2",
+      "name": "edge-guest",
+      "enabled": true,
+      "authMode": "psk",
+      "ipAssignmentMode": "NAT mode",
+      "encryptionMode": "wpa",
+      "wpaEncryptionMode": "WPA3 Transition Mode",
+      "splashPage": "Click-through splash page",
+      "visible": true,
+      "availableOnAllAps": true,
+      "lanIsolationEnabled": true
+    }
+  ]
+}

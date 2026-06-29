@@ -1,0 +1,19 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!update-network-appliance-traffic-shaping-rules",
+  "traffic_shaping_rules": {
+    "defaultRulesEnabled": true,
+    "rules": [
+      {
+        "priority": "high",
+        "dscpTagValue": 46,
+        "perClientBandwidthLimitSettings": "network default",
+        "definitions": [
+          {
+            "type": "host",
+            "value": "sip.example.com"
+          }
+        ]
+      }
+    ]
+  }
+}

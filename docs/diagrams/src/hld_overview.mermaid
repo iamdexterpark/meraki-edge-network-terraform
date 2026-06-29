@@ -1,0 +1,44 @@
+%% HLD OVERVIEW — top of HLD. AGNOSTIC: role-generic labels, no vendor/product names.
+%% Primitives and their relationships. The named products live in lld_topology.mermaid.
+flowchart TB
+    subgraph Control ["Control plane (primitives)"]
+        SRC["config-as-code<br/>(desired end-state)"]
+        REC["declarative reconciler<br/>(computes + applies diff)"]
+        ORD["dependency ordering<br/>(hierarchy-aligned)"]
+        SRC --> REC --> ORD
+    end
+
+    subgraph CP ["Cloud control plane (primitive)"]
+        API["management API<br/>(same plane as the GUI)"]
+    end
+
+    subgraph Edge ["Edge data plane (primitives)"]
+        SEC["security/L3 gateway<br/>default-deny firewall"]
+        SW["L2/L3 switching<br/>trunk + access"]
+        WIFI["wireless overlay<br/>SSID -> trust zone"]
+    end
+
+    subgraph Zones ["Trust-zone segmentation (the keystone control)"]
+        Z["mgmt · trusted · iot · guest<br/>(isolated L3 broadcast domains)"]
+    end
+
+    SECRET["secret materialization<br/>(API key + PSKs, runtime-injected)"] -.-> REC
+    ORD --> API
+    API --> SEC
+    API --> SW
+    API --> WIFI
+    SEC --> Z
+    SW --> Z
+    WIFI --> Z
+    REC -.->|"R/W"| STATE["externalized state<br/>(versioned, encrypted)"]
+
+    style SRC fill:#2c3e50,color:#fff,stroke:#1a252f
+    style REC fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style ORD fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style API fill:#e67e22,color:#fff,stroke:#b9651a
+    style SEC fill:#8e44ad,color:#fff,stroke:#713f8f
+    style SW fill:#8e44ad,color:#fff,stroke:#713f8f
+    style WIFI fill:#8e44ad,color:#fff,stroke:#713f8f
+    style Z fill:#c0392b,color:#fff,stroke:#922b21
+    style SECRET fill:#7f8c8d,color:#fff,stroke:#606a6b
+    style STATE fill:#16a085,color:#fff,stroke:#0e6655

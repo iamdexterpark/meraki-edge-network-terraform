@@ -1,0 +1,44 @@
+%% ARCHITECTURE AT A GLANCE — the module dependency chain.
+%% Apply order mirrors the Meraki Dashboard hierarchy; depends_on enforces it.
+flowchart TD
+    ORG["1 · org<br/>meraki_organization"] --> NET["2 · network<br/>meraki_network"]
+    NET --> DEV["3 · devices<br/>claim + per-device settings"]
+
+    DEV --> MXS["4a · mx/settings<br/>(enable VLANs FIRST)"]
+    MXS --> MXV["4b · mx/vlans"]
+    MXV --> MXF["4c · mx/firewall<br/>(L3/L7, default-deny)"]
+    MXV --> MXVPN["4d · mx/vpn"]
+    MXV --> MXR["4e · mx/routing"]
+    MXS --> MXP["4f · mx/ports"]
+    MXV --> MXTS["4g · mx/traffic_shaping"]
+
+    DEV --> MSS["5a · ms/settings"]
+    MSS --> MSP["5b · ms/ports"]
+    MSS --> MSQ["5c · ms/qos"]
+    MSS --> MSR["5d · ms/routing"]
+    MSS --> MSST["5e · ms/stp"]
+    MSS --> MSA["5f · ms/acl"]
+
+    DEV --> MRS["6a · mr/settings"]
+    MRS --> MRSSID["6b · mr/ssids<br/>(PSK injected out-of-band)"]
+    MRS --> MRRF["6c · mr/rf_profiles"]
+
+    style ORG fill:#2c3e50,color:#fff,stroke:#1a252f
+    style NET fill:#2c3e50,color:#fff,stroke:#1a252f
+    style DEV fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MXS fill:#8e44ad,color:#fff,stroke:#713f8f
+    style MXV fill:#8e44ad,color:#fff,stroke:#713f8f
+    style MXF fill:#c0392b,color:#fff,stroke:#922b21
+    style MXVPN fill:#8e44ad,color:#fff,stroke:#713f8f
+    style MXR fill:#8e44ad,color:#fff,stroke:#713f8f
+    style MXP fill:#8e44ad,color:#fff,stroke:#713f8f
+    style MXTS fill:#8e44ad,color:#fff,stroke:#713f8f
+    style MSS fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MSP fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MSQ fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MSR fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MSST fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MSA fill:#2980b9,color:#fff,stroke:#1f6fa5
+    style MRS fill:#27ae60,color:#fff,stroke:#1e8449
+    style MRSSID fill:#27ae60,color:#fff,stroke:#1e8449
+    style MRRF fill:#27ae60,color:#fff,stroke:#1e8449

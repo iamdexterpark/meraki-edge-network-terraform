@@ -1,0 +1,25 @@
+{
+  "_doc": "https://developer.cisco.com/meraki/api-latest/#!claim-network-devices",
+  "_comment": "List all device serials to claim into the network. The 'devices' array provides per-device settings (name, address, tags).",
+  "serials": [],
+  "devices": [
+    {
+      "serial": "XXXX-XXXX-XXXX",
+      "name": "MX-Edge-01",
+      "tags": ["appliance", "edge"],
+      "notes": "MX security appliance"
+    },
+    {
+      "serial": "YYYY-YYYY-YYYY",
+      "name": "MS-Edge-01",
+      "tags": ["switch", "edge"],
+      "notes": "MS access switch"
+    },
+    {
+      "serial": "ZZZZ-ZZZZ-ZZZZ",
+      "name": "MR-Edge-01",
+      "tags": ["wireless", "edge"],
+      "notes": "MR access point"
+    }
+  ]
+}

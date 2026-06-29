@@ -1,0 +1,40 @@
+# Secrets — never commit actual secret MATERIAL.
+# LESSON: scope to value-bearing files, NOT resource definitions or docs that merely
+# contain the word "secret" (e.g. k8s ExternalSecret / ClusterSecretStore manifests).
+# A broad `*secret*` glob will silently swallow legit resource defs.
+*.env
+.env
+*.key
+*.pem
+*.plain.yaml
+secrets.plain.*
+secrets.dec.*
+age-key.txt
+auth-profiles.json
+
+# Terraform / OpenTofu — state & local working dirs may carry secrets; never commit.
+# NOTE: this ignores STATE and TFVARS, never the .tf source or config.example/ JSON —
+# those are the deliverable and must stay tracked.
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+*.tfplan
+crash.log
+
+# Live config directory — operator's real values (copied from config.example/).
+terraform/config/
+
+# Template-tuning artifact — NOT part of the deliverable, never ship it.
+_TEMPLATE-FRICTION-LOG.md
+
+# Local / OS
+.DS_Store
+*.swp
+*~
+
+# Rendered diagram exports (sources stay in markdown)
+# docs/diagrams/*.png
+# docs/diagrams/*.svg
